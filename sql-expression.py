@@ -40,7 +40,7 @@ track_table = Table(
 with db.connect() as connection:
 
     # Query 1 - select all records from the "Artist" table
-    # select_query = artist_table.select()
+    select_query = artist_table.select()
 
     # Query 2 - select only the "Name" column from the "Artist" table
     # select_query = artist_table.select().with_only_columns([artist_table.c.Name])
@@ -55,8 +55,11 @@ with db.connect() as connection:
     # select_query = album_table.select().where(album_table.c.ArtistId == 51)
 
     # Query 6 - select all tracks where the composer is 'Queen' from the "Track" table
-    select_query = track_table.select().where(track_table.c.Composer == "Queen")
+    # select_query = track_table.select().where(track_table.c.Composer == "Queen")
 
     results = connection.execute(select_query)
     for result in results:
         print(result)
+
+        ## NB: USE set_pg in terminal, and then python3 sql-expression.py 
+        # to restart app to run queries
